@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { BusinesscardComponent } from './businesscard/businesscard.component';
-import { NewbusinesscardComponent } from './newbusinesscard/newbusinesscard.component';
+import { NewBusinesscardComponent } from './newbusinesscard/newbusinesscard.component';
 import { BusinesscardListComponent } from './businesscard-list/businesscard-list.component';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { BusinesscardListComponent } from './businesscard-list/businesscard-list
     LoginComponent,
     HomeComponent,
     BusinesscardComponent,
-    NewbusinesscardComponent,
+    NewBusinesscardComponent,
     BusinesscardListComponent
   ],
   imports: [
