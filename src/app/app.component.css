@@ -32,6 +32,7 @@ main{
 }
 
 .sidebar-menu > header{
+    background-color: inherit;
     text-align: center;
     font-size: 20px;
     font-weight: 700;

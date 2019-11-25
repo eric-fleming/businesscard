@@ -19,11 +19,11 @@ const exData = {
 const routes: Routes = [
   { path: 'examplecard', component: BusinesscardComponent, data: exData },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'listofcards', component: BusinesscardListComponent, canActivate: [AuthGuard] },
-  { path: 'card', component: BusinesscardComponent },
+  { path: 'card', component: BusinesscardComponent, canActivate: [AuthGuard] },
   { path: 'addcard', component: NewBusinesscardComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 
