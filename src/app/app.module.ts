@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { BusinesscardComponent } from './businesscard/businesscard.component';
 import { NewBusinesscardComponent } from './newbusinesscard/newbusinesscard.component';
 import { BusinesscardListComponent } from './businesscard-list/businesscard-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BusinesscardListComponent } from './businesscard-list/businesscard-list
     HomeComponent,
     BusinesscardComponent,
     NewBusinesscardComponent,
-    BusinesscardListComponent
+    BusinesscardListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

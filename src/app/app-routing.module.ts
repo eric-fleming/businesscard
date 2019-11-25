@@ -3,8 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { BusinesscardComponent } from './businesscard/businesscard.component';
 import { BusinesscardListComponent } from './businesscard-list/businesscard-list.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 import { NewBusinesscardComponent } from './newbusinesscard/newbusinesscard.component';
 import { AuthGuard } from './guards/auth-guard.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 const exData = {
   firstName: 'Eric',
@@ -17,10 +20,11 @@ const routes: Routes = [
   { path: 'examplecard', component: BusinesscardComponent, data: exData },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'home', component: BusinesscardComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'listofcards', component: BusinesscardListComponent, canActivate: [AuthGuard] },
+  { path: 'card', component: BusinesscardComponent },
   { path: 'addcard', component: NewBusinesscardComponent, canActivate: [AuthGuard] },
-  { path: '**', component: BusinesscardComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
