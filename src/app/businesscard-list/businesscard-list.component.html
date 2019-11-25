@@ -1,1 +1,7 @@
-<p>businesscard-list works!</p>
+<p>Card list component renders </p>
+
+<!-- Passes info from businessCardList to the businessCardComponent -->
+<app-businesscard
+    *ngFor="let card of businessCardList; let i = index"
+    [cardInfo] = card [i] = i>
+</app-businesscard>
