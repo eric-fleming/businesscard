@@ -1,5 +1,5 @@
 <p>Card list component renders </p>
-
+<button (click)="deleteAll()">Delete All Cards (Beware!)</button>
 <!-- Passes info from businessCardList to the businessCardComponent -->
 <app-businesscard
     *ngFor="let card of businessCardList; let i = index"

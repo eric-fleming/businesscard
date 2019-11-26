@@ -41,6 +41,11 @@ export class BusinesscardsService {
      return this.realtimeDatabase.remove(cardID);
   }
 
+  // Delete All
+  deleteAll() {
+    this.realtimeDatabase.remove();
+  }
+
   // Update Method
 
   // get all cards
@@ -56,7 +61,7 @@ export class BusinesscardsService {
 
 
 
-/* --------- FIRESTORE DATABASE METHODS ---------*/
+/* --------- FIRESTORE DATABASE METHODS --------- */
   addBCard(newBusinessCard: Card): Promise<void> {
     const id = this.afs.createId();
     newBusinessCard.id = id;

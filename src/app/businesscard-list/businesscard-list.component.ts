@@ -31,4 +31,8 @@ export class BusinesscardListComponent implements OnInit {
       });
   }
 
+  deleteAll() {
+    this.service.deleteAll();
+  }
+
 }
