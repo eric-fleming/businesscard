@@ -28,6 +28,13 @@ import { AuthGuard } from './guards/auth-guard.guard';
 import { AuthService } from './service/auth.service';
 import { BusinesscardsService } from './service/businesscards.service';
 
+// My Pipes for searches
+import { FilterFirstNamePipe } from './pipes/filter-first-name.pipe';
+import { FilterLastNamePipe } from './pipes/filter-last-name.pipe';
+import { FilterCompanyPipe } from './pipes/filter-company.pipe';
+import { FilterEmailPipe } from './pipes/filter-email.pipe';
+import { FilterPhonePipe } from './pipes/filter-phone.pipe';
+
 
 // Web Cam Eventually
 
@@ -40,7 +47,12 @@ import { BusinesscardsService } from './service/businesscards.service';
     BusinesscardListComponent,
     NewBusinesscardComponent,
     PageNotFoundComponent,
-    SearchComponent
+    SearchComponent,
+    FilterFirstNamePipe,
+    FilterLastNamePipe,
+    FilterCompanyPipe,
+    FilterEmailPipe,
+    FilterPhonePipe
   ],
   imports: [
     BrowserModule,
