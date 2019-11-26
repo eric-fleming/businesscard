@@ -16,14 +16,26 @@ import { FilterPhonePipe } from '../pipes/filter-phone.pipe';
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  providers: [FilterFirstNamePipe]
+  providers: [
+    FilterFirstNamePipe,
+    FilterLastNamePipe,
+    FilterCompanyPipe,
+    FilterEmailPipe,
+    FilterPhonePipe
+  ]
 })
 export class SearchComponent implements OnInit {
 
   businessCardList: Card[];
   searchResults: Card[];
 
-  constructor(private service: BusinesscardsService, private fnPipe: FilterFirstNamePipe) { }
+  constructor(
+    private service: BusinesscardsService,
+    private fnPipe: FilterFirstNamePipe,
+    private lnPipe: FilterLastNamePipe,
+    private cPipe: FilterCompanyPipe,
+    private ePipe: FilterEmailPipe,
+    private pPipe: FilterPhonePipe) { }
 
   ngOnInit() {
     this.getBusinessCards();
@@ -50,15 +62,40 @@ export class SearchComponent implements OnInit {
     inputArray = inputArray.map( e => e.toLowerCase());
     console.table(inputArray);
 
+    // Get information from database
     this.getBusinessCards();
     const allCards = this.businessCardList;
     let filteredCards = [];
+
+    // filter data based on what the user typed in
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < inputArray.length; i++) {
-      if (!!inputArray[i] && i === 0) {
-        console.log('Filtering by : first name');
-        filteredCards = this.fnPipe.transform(allCards, inputArray[i]);
+      if (!!inputArray[i]) {
+        if (i === 0) {
+          console.log('Filtering by : first name');
+          filteredCards = this.fnPipe.transform(allCards, inputArray[i]);
+        }
+        if (i === 1) {
+          console.log('Filtering by : last name');
+          filteredCards = this.lnPipe.transform(allCards, inputArray[i]);
+        }
+        if (i === 2) {
+          console.log('Filtering by : company');
+          filteredCards = this.cPipe.transform(allCards, inputArray[i]);
+        }
+        if (i === 3) {
+          console.log('Filtering by : email');
+          filteredCards = this.ePipe.transform(allCards, inputArray[i]);
+        }
+        if (i === 4) {
+          console.log('Filtering by : phone');
+          filteredCards = this.pPipe.transform(allCards, inputArray[i]);
+        }
       }
+    }
+    if (filteredCards.length === 0) {
+      // clear previous search results
+      this.searchResults = [];
     }
     this.searchResults = filteredCards;
   }
@@ -72,6 +109,8 @@ export class SearchComponent implements OnInit {
     company.value = '';
     email.value = '';
     phone.value = '';
+    // clear previous search results
+    this.searchResults = [];
   }
 
 }

@@ -1,12 +1,21 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Card } from '../models/Card.model';
 
 @Pipe({
-  name: 'filterPhone'
+  name: 'filterFirstName',
+  pure: false
 })
+
 export class FilterPhonePipe implements PipeTransform {
 
-  transform(value: any, ...args: any[]): any {
-    return null;
+  transform(input: Card[], phone: string): Card[] {
+    let results = [];
+    for (const card of input) {
+      if (card.phone.toLowerCase() === phone.toLowerCase()) {
+        results.push(card);
+      }
+    }
+    return results;
   }
 
 }
