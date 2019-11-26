@@ -34,6 +34,7 @@ import { FilterLastNamePipe } from './pipes/filter-last-name.pipe';
 import { FilterCompanyPipe } from './pipes/filter-company.pipe';
 import { FilterEmailPipe } from './pipes/filter-email.pipe';
 import { FilterPhonePipe } from './pipes/filter-phone.pipe';
+import { UpdateComponent } from './update/update.component';
 
 
 // Web Cam Eventually
@@ -52,7 +53,8 @@ import { FilterPhonePipe } from './pipes/filter-phone.pipe';
     FilterLastNamePipe,
     FilterCompanyPipe,
     FilterEmailPipe,
-    FilterPhonePipe
+    FilterPhonePipe,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
