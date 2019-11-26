@@ -41,6 +41,7 @@ export class UpdateComponent implements OnInit {
     console.log('New Card');
     console.table(freshCard);
     this.service.updateCard(this.cardID, freshCard);
+    this.router.navigate(['/listofcards']);
     /* clear text fields
     firstname.value = '';
     lastname.value = '';
