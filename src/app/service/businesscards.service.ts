@@ -3,6 +3,7 @@ import { Card } from '../models/Card.model';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,7 @@ import { Observable } from 'rxjs/internal/Observable';
 export class BusinesscardsService {
 
   // realtime database stuff
-  database: Card[];
-  realtimeDatabase: AngularFireList<Card>;
+  realtimeDatabaseRef: AngularFireList<Card>;
   fireDBPath = 'businessCardList';
 
   // firestore database stuff
@@ -21,7 +21,8 @@ export class BusinesscardsService {
 
   constructor(private fireDB: AngularFireDatabase, private afs: AngularFirestore) {
     // realtime database
-    this.realtimeDatabase = fireDB.list(this.fireDBPath);
+    this.realtimeDatabaseRef = fireDB.list(this.fireDBPath);
+
     // firestore database
     this.firestoreCardsCollection = afs.collection<Card>(this.afsDBPath);
     this.firestoreCards = this.firestoreCardsCollection.valueChanges();
@@ -33,24 +34,25 @@ export class BusinesscardsService {
   addCard(cd: Card): void {
     const myid = this.afs.createId();
     cd.id = myid;
-    this.realtimeDatabase.push(cd);
+    console.table(cd);
+    this.realtimeDatabaseRef.push(cd);
   }
 
   // Delete Method
-  deleteCard(cardID: string): Promise<void> {
-     return this.realtimeDatabase.remove(cardID);
+  deleteCard(cardID: string) {
+     this.realtimeDatabaseRef.remove(cardID);
   }
 
   // Delete All
   deleteAll() {
-    this.realtimeDatabase.remove();
+    this.realtimeDatabaseRef.remove();
   }
 
   // Update Method
 
   // get all cards
   getBusinessCards(): AngularFireList<Card> {
-    return this.realtimeDatabase;
+    return this.realtimeDatabaseRef;
   }
 
 /* --------- END OF REALTIME DATABASE METHODS---------*/
@@ -61,7 +63,7 @@ export class BusinesscardsService {
 
 
 
-/* --------- FIRESTORE DATABASE METHODS --------- */
+/* --------- FIRESTORE DATABASE METHODS ---------
   addBCard(newBusinessCard: Card): Promise<void> {
     const id = this.afs.createId();
     newBusinessCard.id = id;

@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Card } from '../models/Card.model';
 import { BusinesscardsService } from '../service/businesscards.service';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,7 +15,7 @@ export class BusinesscardComponent implements OnInit {
   @Input() cardInfo: Card;
   @Input() i: any;
 
-  constructor(private businesscardsService: BusinesscardsService, private router: Router) { }
+  constructor(private businesscardsService: BusinesscardsService) { }
 
   ngOnInit() {
   }
@@ -26,9 +25,8 @@ export class BusinesscardComponent implements OnInit {
   }
 
   deleteMyself() {
-    console.log('trying to delete');
-    this.businesscardsService.deleteCard(this.cardInfo.id)
-      .catch(err => console.log(err));
+    console.log(`trying to delete : ${this.cardInfo.id}`);
+    this.businesscardsService.deleteCard(this.cardInfo.id);
   }
   // add on Destroy method later
 

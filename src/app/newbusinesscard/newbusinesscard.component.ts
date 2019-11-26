@@ -21,7 +21,6 @@ export class NewBusinesscardComponent implements OnInit {
     company: HTMLInputElement, email: HTMLInputElement, phone: HTMLInputElement): void {
 
     const freshCard = new Card(firstname.value, lastname.value, company.value, email.value, phone.value);
-    console.table(freshCard);
     this.service.addCard(freshCard);
     // clear text fields
     firstname.value = '';
