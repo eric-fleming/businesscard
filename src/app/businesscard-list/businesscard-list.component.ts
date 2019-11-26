@@ -13,11 +13,10 @@ export class BusinesscardListComponent implements OnInit {
 
   businessCardList: Card[];
 
-  constructor(private service: BusinesscardsService) { }
+  constructor(private service: BusinesscardsService) {}
 
   ngOnInit() {
     this.getBusinessCards();
-    console.table(this.businessCardList);
   }
 
   getBusinessCards() {
@@ -32,7 +31,9 @@ export class BusinesscardListComponent implements OnInit {
   }
 
   deleteAll() {
-    this.service.deleteAll();
+    console.log('Goodbye Everyone :(');
+    this.service.deleteAll()
+        .catch(err => console.log(err));
   }
 
 }

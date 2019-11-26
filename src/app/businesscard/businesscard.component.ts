@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Card } from '../models/Card.model';
 import { BusinesscardsService } from '../service/businesscards.service';
-import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -24,9 +24,15 @@ export class BusinesscardComponent implements OnInit {
     return 'assets/images/blankprofilepic.webp';
   }
 
+  updateCard() {
+    console.log(`starting the update process`);
+
+  }
   deleteMyself() {
     console.log(`trying to delete : ${this.cardInfo.id}`);
-    this.businesscardsService.deleteCard(this.cardInfo.id);
+    this.businesscardsService
+        .deleteCard(this.cardInfo.id)
+        .catch(err => console.log(err));
   }
   // add on Destroy method later
 

@@ -34,12 +34,6 @@ const routes: Routes = [
   { path: 'card', component: BusinesscardComponent, canActivate: [AuthGuard] },
   { path: 'addcard', component: NewBusinesscardComponent, canActivate: [AuthGuard] },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
-  {
-    path: 'business-listofcards/searchBy/:searchBy/searchFor/:searchFor',
-    component: SearchComponent,
-    canActivate: [AuthGuard],
-    runGuardsAndResolvers: 'always'
-  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

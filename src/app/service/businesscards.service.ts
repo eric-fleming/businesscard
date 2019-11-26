@@ -11,8 +11,9 @@ import { map } from 'rxjs/operators';
 export class BusinesscardsService {
 
   // realtime database stuff
-  realtimeDatabaseRef: AngularFireList<Card>;
   fireDBPath = 'businessCardList';
+  realtimeDatabaseRef: AngularFireList<Card>;
+  items: Observable<any>;
 
   // firestore database stuff
   private afsDBPath = 'businesscards';
@@ -22,6 +23,7 @@ export class BusinesscardsService {
   constructor(private fireDB: AngularFireDatabase, private afs: AngularFirestore) {
     // realtime database
     this.realtimeDatabaseRef = fireDB.list(this.fireDBPath);
+    this.items = this.realtimeDatabaseRef.snapshotChanges();
 
     // firestore database
     this.firestoreCardsCollection = afs.collection<Card>(this.afsDBPath);
@@ -38,17 +40,20 @@ export class BusinesscardsService {
     this.realtimeDatabaseRef.push(cd);
   }
 
+  // Update Method
+  updateCard(cardID: string, value: any): Promise<void> {
+    return this.realtimeDatabaseRef.update(cardID, value);
+  }
+
   // Delete Method
-  deleteCard(cardID: string) {
-     this.realtimeDatabaseRef.remove(cardID);
+  deleteCard(cardID: string): Promise<void> {
+     return this.realtimeDatabaseRef.remove(cardID);
   }
 
   // Delete All
-  deleteAll() {
-    this.realtimeDatabaseRef.remove();
+  deleteAll(): Promise<void> {
+    return this.realtimeDatabaseRef.remove();
   }
-
-  // Update Method
 
   // get all cards
   getBusinessCards(): AngularFireList<Card> {
