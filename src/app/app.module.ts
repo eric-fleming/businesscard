@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { WebcamModule } from 'ngx-webcam';
 import { AppComponent } from './app.component';
 
 // My Components
@@ -68,7 +69,8 @@ import { FilterPhonePipe } from './pipes/filter-phone.pipe';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    WebcamModule
   ],
   providers: [
     AuthGuard,
