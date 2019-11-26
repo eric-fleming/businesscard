@@ -15,13 +15,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthGuard } from './guards/auth-guard.guard';
 
 const exData = {
-  id: '001',
-  firstname: 'Eric',
-  lastname: 'Fleming',
-  phone: '(224) 723-8678',
-  email: 'ericfleming8@gmail.com',
-  company: 'DePaul University',
-  imageURL: '../assets/images/ef.png'
+
+    id: '001',
+    firstname: 'Eric',
+    lastname: 'Fleming',
+    phone: '(224) 723-8678',
+    email: 'ericfleming8@gmail.com',
+    company: 'DePaul University',
+    imageURL: 'assets/images/blankprofilepic.webp'
+
 };
 
 const routes: Routes = [
