@@ -1,5 +1,3 @@
-<p>businesscard component renders!</p>
-
 <article class="b-card">
     <div class="profile-pic">
         <img src="{{this.getImageURL()}}" alt="blank profile pic">
@@ -12,12 +10,10 @@
             <li>Email  : {{cardInfo.email}}</li>
         </ul>
         
-        <button class="delete-warning" (click)="deleteMyself()">
-            delete me (be sure)
-        </button>
+        <!-- <button class="delete-warning" (click)="deleteMyself()">delete me (be sure)</button> -->
         <button class="update-warning"
                 [routerLink]="['/update', cardInfo.id, cardInfo.firstname, cardInfo.lastname, cardInfo.company, cardInfo.email, cardInfo.phone]">
-            update info
+            Edit Info
         </button>
     </div>
 </article>

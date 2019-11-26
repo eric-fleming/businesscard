@@ -3,7 +3,6 @@ import { Card } from '../models/Card.model';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

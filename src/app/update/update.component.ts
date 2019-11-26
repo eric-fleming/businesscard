@@ -40,13 +40,14 @@ export class UpdateComponent implements OnInit {
 
     console.log('New Card');
     console.table(freshCard);
+    // Make new record
     this.service.updateCard(this.cardID, freshCard);
     this.router.navigate(['/listofcards']);
-    /* clear text fields
-    firstname.value = '';
-    lastname.value = '';
-    company.value = '';
-    email.value = '';
-    phone.value = ''; */
+  }
+
+  deleteMyself(): void {
+    console.log('Attempting to delete');
+    this.service.deleteCard(this.cardID);
+    this.router.navigate(['/listofcards']);
   }
 }

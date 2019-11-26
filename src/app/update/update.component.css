@@ -14,3 +14,22 @@
 .form-input{
     margin-bottom: 8px;
 }
+
+.btn{
+    margin-right: 16px;
+}
+.btn-info{
+    background-color: lightskyblue;
+}
+.btn-info:hover{
+    background-color: blue;
+    color: white;
+}
+
+.btn-danger{
+    background-color: lightcoral;
+}
+.btn-danger:hover{
+    background-color: red;
+    color: white;
+}
