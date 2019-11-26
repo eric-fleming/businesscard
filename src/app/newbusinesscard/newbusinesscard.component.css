@@ -1,0 +1,12 @@
+.sm{
+    min-width: 240px;
+    max-width: 425px;
+    width:70%;
+}
+.form-box{
+    min-width: 480px;
+    max-width: 720px;
+    width:80%;
+    margin: 32px auto;
+    padding: 16px;
+}
