@@ -61,32 +61,4 @@ export class BusinesscardsService {
   }
 
 /* --------- END OF REALTIME DATABASE METHODS---------*/
-
-
-
-
-
-
-
-/* --------- FIRESTORE DATABASE METHODS ---------
-  addBCard(newBusinessCard: Card): Promise<void> {
-    const id = this.afs.createId();
-    newBusinessCard.id = id;
-    return this.firestoreCardsCollection.doc(id).set(Object.assign({}, newBusinessCard));
-  }
-
-  updateBCard(id: string, update: Card): Promise<void> {
-    return this.firestoreCardsCollection.doc(id).update(Object.assign({}, update));
-  }
-
-  deleteBCard(id: string): Promise<void> {
-    return this.firestoreCardsCollection.doc(id).delete();
-  }
-
-  getBCardsCollection(): AngularFirestoreCollection<Card> {
-    return this.firestoreCardsCollection;
-  }
-
-
-/* --------- END OF FIRESTORE DATABASE METHODS---------*/
 }

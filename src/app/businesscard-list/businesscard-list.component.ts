@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Card } from '../models/Card.model';
 import { BusinesscardsService } from '../service/businesscards.service';
 import { map } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './businesscard-list.component.html',
   styleUrls: ['./businesscard-list.component.css']
 })
-export class BusinesscardListComponent implements OnInit {
+export class BusinesscardListComponent implements OnInit, OnDestroy {
 
   businessCardList: Card[];
 
@@ -34,6 +34,10 @@ export class BusinesscardListComponent implements OnInit {
     console.log('Goodbye Everyone :(');
     this.service.deleteAll()
         .catch(err => console.log(err));
+  }
+
+  ngOnDestroy(): void {
+    // throw new Error('Method not implemented.');
   }
 
 }
