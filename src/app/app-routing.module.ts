@@ -29,6 +29,7 @@ const exData = {
 const routes: Routes = [
   { path: 'examplecard', component: BusinesscardComponent, data: exData },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'listofcards', component: BusinesscardListComponent, canActivate: [AuthGuard] },
   { path: 'card', component: BusinesscardComponent, canActivate: [AuthGuard] },

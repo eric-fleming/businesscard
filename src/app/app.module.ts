@@ -37,6 +37,7 @@ import { FilterLastNamePipe } from './pipes/filter-last-name.pipe';
 import { FilterCompanyPipe } from './pipes/filter-company.pipe';
 import { FilterEmailPipe } from './pipes/filter-email.pipe';
 import { FilterPhonePipe } from './pipes/filter-phone.pipe';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -58,6 +59,7 @@ import { FilterPhonePipe } from './pipes/filter-phone.pipe';
     FilterCompanyPipe,
     FilterEmailPipe,
     FilterPhonePipe,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
