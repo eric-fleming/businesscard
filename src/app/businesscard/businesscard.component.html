@@ -1,1 +1,15 @@
-<p>businesscard works!</p>
+<p>businesscard component renders!</p>
+
+<article class="b-card">
+    <div class="profile-pic">
+        <img src="{{this.getImageURL()}}" alt="blank profile pic">
+    </div>
+    <div class="info">
+        <ul>
+            <li>{{firstname}} {{lastname}}</li>
+            <li>Company: {{company}}</li>
+            <li>Phone #: {{phone}}</li>
+            <li>Email  : {{email}}</li>
+        </ul>
+    </div>
+</article>
