@@ -16,7 +16,7 @@ export class BusinesscardsService {
     // perhaps add some statically to test
   }
 
-  addTodo(cd: Card): void {
+  addCard(cd: Card): void {
     this.fireDatabase.push(cd);
   }
 

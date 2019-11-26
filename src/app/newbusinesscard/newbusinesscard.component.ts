@@ -17,15 +17,18 @@ export class NewBusinesscardComponent implements OnInit {
   }
 
   submit(
-    text: HTMLInputElement,
-    dueDate: HTMLInputElement): void {
-      // add all the fields
-    const freshCard = new Card();
+    firstname: HTMLInputElement, lastname: HTMLInputElement,
+    company: HTMLInputElement, email: HTMLInputElement, phone: HTMLInputElement): void {
+
+    const freshCard = new Card(firstname.value, lastname.value, company.value, email.value, phone.value);
     console.table(freshCard);
-    this.service.addTodo(freshCard);
+    this.service.addCard(freshCard);
     // clear text fields
-    text.value = '';
-    dueDate.value = '';
+    firstname.value = '';
+    lastname.value = '';
+    company.value = '';
+    email.value = '';
+    phone.value = '';
   }
 
 }

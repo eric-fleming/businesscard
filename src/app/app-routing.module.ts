@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'listofcards', component: BusinesscardListComponent, canActivate: [AuthGuard] },
   { path: 'card', component: BusinesscardComponent, canActivate: [AuthGuard] },
   { path: 'addcard', component: NewBusinesscardComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
   {
     path: 'business-listofcards/searchBy/:searchBy/searchFor/:searchFor',
     component: SearchComponent,
@@ -44,7 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

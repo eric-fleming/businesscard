@@ -4,9 +4,13 @@
     width:70%;
 }
 .form-box{
-    min-width: 480px;
-    max-width: 720px;
+    min-width: 128px;
+    max-width: 256px;
     width:80%;
     margin: 32px auto;
     padding: 16px;
+}
+
+.form-input{
+    margin-bottom: 8px;
 }
