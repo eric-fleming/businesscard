@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UpdateComponent } from './update/update.component';
 // Guards
 import { AuthGuard } from './guards/auth-guard.guard';
+import { LogoutComponent } from './logout/logout.component';
 
 const exData = {
 
@@ -29,7 +30,7 @@ const exData = {
 const routes: Routes = [
   { path: 'examplecard', component: BusinesscardComponent, data: exData },
   { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'listofcards', component: BusinesscardListComponent, canActivate: [AuthGuard] },
   { path: 'card', component: BusinesscardComponent, canActivate: [AuthGuard] },
