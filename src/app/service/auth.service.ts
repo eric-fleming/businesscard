@@ -30,7 +30,7 @@ export class AuthService {
         localStorage.setItem('username', 'user');
         this.message = '';
         console.log('Nice, it worked!', value);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/home']);
       })
       .catch(err => {
         this.message = 'Incorrect username or password';
