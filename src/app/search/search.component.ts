@@ -5,17 +5,25 @@ import { map } from 'rxjs/operators';
 import { from } from 'rxjs/internal/observable/from';
 import { Observable } from 'rxjs';
 
+// My Pipes for searches
+import { FilterFirstNamePipe } from '../pipes/filter-first-name.pipe';
+import { FilterLastNamePipe } from '../pipes/filter-last-name.pipe';
+import { FilterCompanyPipe } from '../pipes/filter-company.pipe';
+import { FilterEmailPipe } from '../pipes/filter-email.pipe';
+import { FilterPhonePipe } from '../pipes/filter-phone.pipe';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+  providers: [FilterFirstNamePipe]
 })
 export class SearchComponent implements OnInit {
 
   businessCardList: Card[];
   searchResults: Card[];
 
-  constructor(private service: BusinesscardsService) { }
+  constructor(private service: BusinesscardsService, private fnPipe: FilterFirstNamePipe) { }
 
   ngOnInit() {
     this.getBusinessCards();
@@ -39,14 +47,20 @@ export class SearchComponent implements OnInit {
     let inputArray = [firstname.value, lastname.value, company.value, email.value, phone.value];
 
     // Testing the fields
-    console.table(inputArray);
     inputArray = inputArray.map( e => e.toLowerCase());
     console.table(inputArray);
 
     this.getBusinessCards();
-    const allCardsStream = from(this.businessCardList);
-
-    // I need to grab the results and filter the output.
+    const allCards = this.businessCardList;
+    let filteredCards = [];
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < inputArray.length; i++) {
+      if (!!inputArray[i] && i === 0) {
+        console.log('Filtering by : first name');
+        filteredCards = this.fnPipe.transform(allCards, inputArray[i]);
+      }
+    }
+    this.searchResults = filteredCards;
   }
 
   clear(
