@@ -52,6 +52,34 @@ export class SearchComponent implements OnInit {
       });
   }
 
+  private filterFunction(target: Card[], inputArray: string[]): Card[] {
+    let filteredCards = target;
+    // filter data based on what the user typed in
+    // tslint:disable-next-line:prefer-for-of
+
+    for (let i = 0; i < inputArray.length; i++) {
+      if (!!inputArray[i]) {
+        if (i === 0) {
+          console.log('Filtering by : first name');
+          filteredCards = this.fnPipe.transform(filteredCards, inputArray[i]);
+        } else if (i === 1) {
+          console.log('Filtering by : last name');
+          filteredCards = this.lnPipe.transform(filteredCards, inputArray[i]);
+        } else if (i === 2) {
+          console.log('Filtering by : company');
+          filteredCards = this.cPipe.transform(filteredCards, inputArray[i]);
+        } else if (i === 3) {
+          console.log('Filtering by : email');
+          filteredCards = this.ePipe.transform(filteredCards, inputArray[i]);
+        } else if (i === 4) {
+          console.log('Filtering by : phone');
+          filteredCards = this.pPipe.transform(filteredCards, inputArray[i]);
+        }
+      }
+    }
+    return filteredCards;
+  }
+
   search(
     firstname: HTMLInputElement, lastname: HTMLInputElement,
     company: HTMLInputElement, email: HTMLInputElement, phone: HTMLInputElement): void {
@@ -65,38 +93,15 @@ export class SearchComponent implements OnInit {
     // Get information from database
     this.getBusinessCards();
     const allCards = this.businessCardList;
-    let filteredCards = [];
 
-    // filter data based on what the user typed in
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < inputArray.length; i++) {
-      if (!!inputArray[i]) {
-        if (i === 0) {
-          console.log('Filtering by : first name');
-          filteredCards = this.fnPipe.transform(allCards, inputArray[i]);
-        }
-        if (i === 1) {
-          console.log('Filtering by : last name');
-          filteredCards = this.lnPipe.transform(allCards, inputArray[i]);
-        }
-        if (i === 2) {
-          console.log('Filtering by : company');
-          filteredCards = this.cPipe.transform(allCards, inputArray[i]);
-        }
-        if (i === 3) {
-          console.log('Filtering by : email');
-          filteredCards = this.ePipe.transform(allCards, inputArray[i]);
-        }
-        if (i === 4) {
-          console.log('Filtering by : phone');
-          filteredCards = this.pPipe.transform(allCards, inputArray[i]);
-        }
-      }
-    }
+    // call the grand filtering function
+    const filteredCards = this.filterFunction(allCards, inputArray);
+
+    // clear previous search results
     if (filteredCards.length === 0) {
-      // clear previous search results
       this.searchResults = [];
     }
+    // set the result to be rendered
     this.searchResults = filteredCards;
   }
 
