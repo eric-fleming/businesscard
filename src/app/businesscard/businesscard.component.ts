@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Card } from '../models/Card.model';
 import { BusinesscardsService } from '../service/businesscards.service';
 import { Subscription } from 'rxjs';
@@ -9,8 +9,8 @@ import { Subscription } from 'rxjs';
   templateUrl: './businesscard.component.html',
   styleUrls: ['./businesscard.component.css']
 })
-export class BusinesscardComponent implements OnInit, OnDestroy {
-
+export class BusinesscardComponent implements OnInit {
+// add on destroy to imports and to implements
 
   @Input() cardInfo: Card;
   @Input() i: any;
@@ -19,13 +19,9 @@ export class BusinesscardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
   }
-
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
-
   getImageURL(): string {
-    return this.cardInfo.imageURL;
+    return 'assets/images/blankprofilepic.webp';
   }
+  // add on Destroy method later
 
 }
