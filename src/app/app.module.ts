@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { BusinesscardComponent } from './businesscard/businesscard.component';
 import { NewBusinesscardComponent } from './newbusinesscard/newbusinesscard.component';
 import { BusinesscardListComponent } from './businesscard-list/businesscard-list.component';
+import { SearchComponent } from './search/search.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // Firebase
@@ -20,7 +21,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
-// My services
+// My services and Guards
+import { AuthGuard } from './guards/auth-guard.guard';
+import { AuthService } from './service/auth.service';
+import { BusinesscardsService } from './service/businesscards.service';
 
 
 // Web Cam Eventually
@@ -31,9 +35,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     LoginComponent,
     HomeComponent,
     BusinesscardComponent,
-    NewBusinesscardComponent,
     BusinesscardListComponent,
-    PageNotFoundComponent
+    NewBusinesscardComponent,
+    PageNotFoundComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFireAuthModule,
     AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthService,
+    BusinesscardsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
