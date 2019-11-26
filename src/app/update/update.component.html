@@ -1,1 +1,25 @@
-<p>update works!</p>
+<h3>Update the card you selected</h3>
+<p>You see the old values in the form below.  Change them to the current information or navigate elsewhere.</p>
+<form class="form-box">
+    <div class="form-group form-input">
+        <label for="firstname">First-name</label>
+        <input class="form-control sm" type="text" id="firstname" name="firstname" value="{{myOldCard.firstname}}" #firstname>
+    </div>
+    <div class="form-group form-input">
+        <label for="lastname">Last-name</label>
+        <input class="form-control sm" type="text" id="lastname" name="lastname" value="{{myOldCard.lastname}}" #lastname>
+    </div>
+    <div class="form-group form-input">
+        <label for="company">Your Company</label>
+        <input class="form-control sm" type="text" id="company" name="company" value="{{myOldCard.company}}" #company>
+    </div>
+    <div class="form-group form-input">
+        <label for="email">Your Email</label>
+        <input class="form-control sm" type="text" id="email" name="email" value="{{myOldCard.email}}" #email>
+    </div>
+    <div class="form-group form-input">
+        <label for="phone">Your Phone #</label>
+        <input class="form-control sm" type="text" id="phone" name="phone" value="{{myOldCard.phone}}" #phone>
+    </div>
+    <button class="btn btn-info" (click)="update(firstname,lastname,company,email,phone)">Update</button>
+</form>

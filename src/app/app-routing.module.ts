@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NewBusinesscardComponent } from './newbusinesscard/newbusinesscard.component';
 import { SearchComponent } from './search/search.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { UpdateComponent } from './update/update.component';
 // Guards
 import { AuthGuard } from './guards/auth-guard.guard';
 
@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'card', component: BusinesscardComponent, canActivate: [AuthGuard] },
   { path: 'addcard', component: NewBusinesscardComponent, canActivate: [AuthGuard] },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
+  { path: 'update/:id/:firstname/:lastname/:company/:email/:phone', component: UpdateComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -13,6 +13,7 @@ import { BusinesscardComponent } from './businesscard/businesscard.component';
 import { NewBusinesscardComponent } from './newbusinesscard/newbusinesscard.component';
 import { BusinesscardListComponent } from './businesscard-list/businesscard-list.component';
 import { SearchComponent } from './search/search.component';
+import { UpdateComponent } from './update/update.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // Firebase
@@ -34,7 +35,7 @@ import { FilterLastNamePipe } from './pipes/filter-last-name.pipe';
 import { FilterCompanyPipe } from './pipes/filter-company.pipe';
 import { FilterEmailPipe } from './pipes/filter-email.pipe';
 import { FilterPhonePipe } from './pipes/filter-phone.pipe';
-import { UpdateComponent } from './update/update.component';
+
 
 
 // Web Cam Eventually
@@ -49,12 +50,12 @@ import { UpdateComponent } from './update/update.component';
     NewBusinesscardComponent,
     PageNotFoundComponent,
     SearchComponent,
+    UpdateComponent,
     FilterFirstNamePipe,
     FilterLastNamePipe,
     FilterCompanyPipe,
     FilterEmailPipe,
     FilterPhonePipe,
-    UpdateComponent
   ],
   imports: [
     BrowserModule,

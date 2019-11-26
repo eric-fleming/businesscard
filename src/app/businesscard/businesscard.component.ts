@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Card } from '../models/Card.model';
 import { BusinesscardsService } from '../service/businesscards.service';
+import { Router } from '@angular/router';
 
 
 
@@ -15,7 +16,7 @@ export class BusinesscardComponent implements OnInit {
   @Input() cardInfo: Card;
   @Input() i: any;
 
-  constructor(private businesscardsService: BusinesscardsService) { }
+  constructor(private businesscardsService: BusinesscardsService, private router: Router) { }
 
   ngOnInit() {
   }
