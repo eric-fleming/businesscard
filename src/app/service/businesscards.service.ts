@@ -1,30 +1,80 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../models/Card.model';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BusinesscardsService {
 
+  // realtime database stuff
   database: Card[];
-  fireDatabase: AngularFireList<Card>;
+  realtimeDatabase: AngularFireList<Card>;
   fireDBPath = 'businessCardList';
 
-  constructor(private fireDB: AngularFireDatabase) {
-    this.fireDatabase = fireDB.list(this.fireDBPath);
-    // perhaps add some statically to test
+  // firestore database stuff
+  private afsDBPath = 'businesscards';
+  firestoreCards: Observable<Card[]>;
+  firestoreCardsCollection: AngularFirestoreCollection<Card>;
+
+  constructor(private fireDB: AngularFireDatabase, private afs: AngularFirestore) {
+    // realtime database
+    this.realtimeDatabase = fireDB.list(this.fireDBPath);
+    // firestore database
+    this.firestoreCardsCollection = afs.collection<Card>(this.afsDBPath);
+    this.firestoreCards = this.firestoreCardsCollection.valueChanges();
   }
 
+
+
+  /* --------- REALTIME DATABASE METHODS ---------*/
   addCard(cd: Card): void {
-    this.fireDatabase.push(cd);
+    const myid = this.afs.createId();
+    cd.id = myid;
+    this.realtimeDatabase.push(cd);
+  }
+
+  // Delete Method
+  deleteCard(cardID: string): Promise<void> {
+     return this.realtimeDatabase.remove(cardID);
   }
 
   // Update Method
 
+  // get all cards
   getBusinessCards(): AngularFireList<Card> {
-    return this.fireDatabase;
+    return this.realtimeDatabase;
   }
 
-  // Delete Method
+/* --------- END OF REALTIME DATABASE METHODS---------*/
+
+
+
+
+
+
+
+/* --------- FIRESTORE DATABASE METHODS ---------*/
+  addBCard(newBusinessCard: Card): Promise<void> {
+    const id = this.afs.createId();
+    newBusinessCard.id = id;
+    return this.firestoreCardsCollection.doc(id).set(Object.assign({}, newBusinessCard));
+  }
+
+  updateBCard(id: string, update: Card): Promise<void> {
+    return this.firestoreCardsCollection.doc(id).update(Object.assign({}, update));
+  }
+
+  deleteBCard(id: string): Promise<void> {
+    return this.firestoreCardsCollection.doc(id).delete();
+  }
+
+  getBCardsCollection(): AngularFirestoreCollection<Card> {
+    return this.firestoreCardsCollection;
+  }
+
+
+/* --------- END OF FIRESTORE DATABASE METHODS---------*/
 }

@@ -20,3 +20,21 @@
     width: inherit;
     height: auto;
 }
+
+.update-warning{
+    float: right;
+}
+
+.update-warning:hover{
+    float: right;
+    background-color: darkgoldenrod;
+    color: white;
+}
+
+.delete-warning{
+    float: right;
+}
+.delete-warning:hover{
+    background-color: crimson;
+    color: white;
+}
