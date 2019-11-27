@@ -1,27 +1,29 @@
-import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject } from 'rxjs';
 import { User } from '../models/User.model';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 
-
-/**
- * UserService manages our current user
- * perhaps its needs from root in injectable
- */
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  // `currentUser` contains the current user
-  currentUser: Subject<User> = new BehaviorSubject<User>(null);
+  private dbPath = 'users';
+  users: Observable<User[]>;
+  usersCollection: AngularFirestoreCollection<User>;
 
-  // potentially adding a new service
-  // constructor(public service: OtherService){}
-
-  public setCurrentUser(newUser: User): void {
-    this.currentUser.next(newUser);
+  constructor(private afs: AngularFirestore) {
+    this.usersCollection = afs.collection<User>(this.dbPath);
+    this.users = this.usersCollection.valueChanges();
   }
-}
 
-export const userServiceInjectables: Array<any> = [
-  UsersService
-];
+  updateUser(id: string, update: User) {
+    return this.usersCollection.doc(id).update(update);
+  }
+
+  addUser(newUser: User): Promise<void> {
+    const id = this.afs.createId();
+    newUser.id = id;
+    return this.usersCollection.doc(id).set(Object.assign({}, newUser));
+  }
+
+}
