@@ -1,5 +1,6 @@
 {
   "projects": {
-    "businesscar-ericfleming": "businesscard-c66ca"
+    "businesscar-ericfleming": "businesscard-c66ca",
+    "default": "businesscard-c66ca"
   }
 }
