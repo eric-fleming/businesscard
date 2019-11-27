@@ -5,7 +5,7 @@ header{
     padding:8px;
 }
 footer{
-    height:120px;
+    height:80px;
     background-color: #f1f1f1;
 }
 header > h1,
@@ -16,7 +16,7 @@ header > h3{
 
 .app-body{
     background-color: aliceblue;
-    height: 550px;
+    height: 2000px;
     display: flex;
 }
 
