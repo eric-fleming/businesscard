@@ -7,7 +7,9 @@ import { User } from '../models/User.model';
  * UserService manages our current user
  * perhaps its needs from root in injectable
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UsersService {
   // `currentUser` contains the current user
   currentUser: Subject<User> = new BehaviorSubject<User>(null);
