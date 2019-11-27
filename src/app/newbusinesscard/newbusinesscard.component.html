@@ -1,7 +1,19 @@
 <h3 class="title">Add a New Business Card</h3>
 <section class="flex">
     <section class="flex1">
-        <webcam [height]="256" [width]="256"></webcam>
+        <webcam [height]="256" [width]="256" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+        <!-- *ngIf="showWebcam" -->
+        <br />
+        <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
+        <div class="snapshot" *ngIf="webcamImage">
+            <h2>Nice one!</h2>
+            <img [src]="webcamImage.imageAsDataUrl" />
+        </div>
+        <h4 *ngIf="errors.length > 0">Messages:</h4>
+        <ul *ngFor="let error of errors">
+            <li>{{error | json}}</li>
+        </ul>
+        <!-- <h4 *ngIf="errors.length > 0">Messages:</h4> -->
     </section>
     <form class="form-box flex1">
         <div class="form-group form-input">
