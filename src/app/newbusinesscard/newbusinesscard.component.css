@@ -1,16 +1,27 @@
+.title{
+    text-align: center;
+}
 .sm{
     min-width: 240px;
     max-width: 425px;
     width:70%;
 }
 .form-box{
-    min-width: 128px;
-    max-width: 256px;
-    width:80%;
-    margin: 32px auto;
+    /* min-width: 128px; */
+    /* max-width: 256px; */
+    /* width:80%; */
+    /* margin: 32px auto; */
     padding: 16px;
 }
 
 .form-input{
     margin-bottom: 8px;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex1{
+    flex:1;
 }
