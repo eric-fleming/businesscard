@@ -1,12 +1,12 @@
 .container{
     width:50%;
     margin:0 auto;
-    padding-bottom: 16px;
-    background-color: lightgray;
+    padding: 16px;
+    background-color: #f1f1f1;
 }
 .box{
-    border-radius:32px;
-    margin-top:128px;
+    border-radius:16px;
+    margin:128px auto;
 }
 
 header{
@@ -15,27 +15,36 @@ header{
 .text-center{
     text-align: center;
 }
+
+.form-group{
+    margin-bottom: 8px;
+}
+.form-control{
+    margin-left:16px;
+    padding:4px;
+    border: 1px solid gray;
+    border-radius:4px;
+    height:24px;
+    width:256px;
+}
+
 .login-options{
     padding: 8px;
 
 }
 
 .login-options > button {
-    margin-right:8px;
+    margin-right:16px;
 }
 #email-login{
-    border: 1px solid #0276FD;
+    border: 1px solid lightseagreen;
+    border-radius: 4px;
+    width: 64px;
+    height: 24px;
+    font-size: 16px;
+    font-weight:700;
 }
 #email-login:hover{
-    background-color: #0276FD
-}
-#google-login{
-    border: 1px solid crimson;
-}
-#google-login:hover{
-    background-color: crimson
-}
-
-#hack:hover{
-    background-color:goldenrod;
+    background-color: lightseagreen;
+    color:white;
 }
