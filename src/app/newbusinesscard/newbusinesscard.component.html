@@ -1,15 +1,19 @@
-<h3 class="title">Add a New Business Card</h3>
+<h2 class="title">Add a New Business Card</h2>
 <section class="flex">
     <section class="flex1">
-        <webcam [height]="256" [width]="256" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
-        <!-- *ngIf="showWebcam" -->
+        <webcam [height]="256" [width]="256" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" [imageQuality]="1" *ngIf="showWebcam"></webcam>
         <br />
         <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-        <button class="actionBtn" (click)="clearSnapshot();">Clear Recent Snapshot</button>
-        <div class="snapshot" *ngIf="webcamImage">
-            <h2>Nice one!</h2>
-            <img class="snapshot-size" [src]="webcamImage.imageAsDataUrl" />
+
+        <div id="snapshot" class="snapshot" *ngIf="webcamImage">
+            <h3>Your Snapshot!</h3>
+            <div class="options">
+                <button class="actionBtn" (click)="clearSnapshot();">Clear Recent Snapshot</button>
+                <button class="actionBtn" (click)="convertToBase64()">Process Image (Input into form)</button>
+            </div>
+            <img id="image" class="snapshot-size" [src]="webcamImage.imageAsDataUrl" />
         </div>
+
         <h4 *ngIf="errors.length > 0">Messages:</h4>
         <ul *ngFor="let error of errors">
             <li>{{error | json}}</li>
@@ -38,5 +42,8 @@
             <input class="form-control sm" type="text" id="phone" name="phone" #phone>
         </div>
         <button class="btn btn-info" (click)="submit(firstname,lastname,company,email,phone)">Add +</button>
+        <div id="extracted">
+            
+        </div>
     </form>
 </section>

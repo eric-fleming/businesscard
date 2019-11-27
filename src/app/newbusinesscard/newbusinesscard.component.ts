@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Card } from '../models/Card.model';
 import { BusinesscardsService } from '../service/businesscards.service';
+import { WebcameraService } from '../service/webcamera.service';
 
 // For the Webcamera
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Subject, Observable, Subscription } from 'rxjs';
 import { WebcamImage, WebcamInitError } from 'ngx-webcam';
+import domtoimage from 'dom-to-image';
 
 
 @Component({
@@ -13,21 +14,34 @@ import { WebcamImage, WebcamInitError } from 'ngx-webcam';
   templateUrl: './newbusinesscard.component.html',
   styleUrls: ['./newbusinesscard.component.css']
 })
-export class NewBusinesscardComponent implements OnInit {
+export class NewBusinesscardComponent implements OnInit, OnDestroy {
 
   // toggle webcam on/off
   public showWebcam = true;
   public errors: WebcamInitError[] = [];
-
   // latest snapshot
   public webcamImage: WebcamImage = null;
   // webcam snapshot trigger
   private trigger: Subject<void> = new Subject<void>();
 
-  constructor(private service: BusinesscardsService) { }
+  // computation state
+  pageLoaded: boolean;
+  subscription: Subscription;  // holds the processed data
+  imageBase64 = new EventEmitter();
+  textDetection = new EventEmitter();
+
+  constructor(private service: BusinesscardsService, private webcamService: WebcameraService) { }
 
   ngOnInit() {
-    // Use if you had multiple web cameras
+    // computation state
+    this.pageLoaded = false;
+    this.subscription = new Subscription();
+  }
+
+  ngOnDestroy() {
+    // clean up
+    this.subscription.unsubscribe();
+    console.log('ngOnDestroy unsubed');
   }
 
   submit(
@@ -75,5 +89,33 @@ export class NewBusinesscardComponent implements OnInit {
     return this.trigger.asObservable();
   }
   // public get nextWebcamObservable(): Observable<boolean | string>
+
+  convertToBase64() {
+    let result;
+    this.pageLoaded = true;
+    const imageSnapshot = document.getElementById('image');
+    // console.log(imgNode);
+    domtoimage.toPng(imageSnapshot)
+      .then((dataUrl: string) => {
+        console.log('converting base64...');
+        this.imageBase64.emit(dataUrl);
+        result = this.webcamService.getTextDetection(dataUrl)
+          .subscribe(res => {
+            this.textDetection.emit(res);
+            this.pageLoaded = false;
+          },
+            (err) => {
+              console.log(err);
+              this.pageLoaded = false;
+            });
+
+      }).catch((e: any) => {
+        console.log('SELECTED IMAGE BASE64 SOMETHING WENT WRONG');
+        // console.log(e);
+        this.pageLoaded = false;
+      });
+
+    this.subscription.add(result);
+  }
 
 }
