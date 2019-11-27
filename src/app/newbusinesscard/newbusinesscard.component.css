@@ -25,3 +25,8 @@
 .flex1{
     flex:1;
 }
+
+.snapshot-size{
+    width: 256px;
+    height: auto;
+}

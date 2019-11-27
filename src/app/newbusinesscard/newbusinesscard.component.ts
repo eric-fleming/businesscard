@@ -49,6 +49,10 @@ export class NewBusinesscardComponent implements OnInit {
     this.trigger.next();
   }
 
+  public clearSnapshot(): void {
+    this.webcamImage = null;
+  }
+
   public toggleWebcam(): void {
     this.showWebcam = !this.showWebcam;
   }
