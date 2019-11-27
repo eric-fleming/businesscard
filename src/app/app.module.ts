@@ -30,6 +30,7 @@ import { AuthGuard } from './guards/auth-guard.guard';
 import { AuthService } from './service/auth.service';
 import { BusinesscardsService } from './service/businesscards.service';
 import { WebcameraService } from './service/webcamera.service';
+import { UsersService } from './service/users.service';
 
 // My Pipes for searches
 import { FilterFirstNamePipe } from './pipes/filter-first-name.pipe';
@@ -77,6 +78,7 @@ import { LogoutComponent } from './logout/logout.component';
   providers: [
     AuthGuard,
     AuthService,
+    UsersService,
     BusinesscardsService,
     WebcameraService
   ],

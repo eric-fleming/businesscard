@@ -1,8 +1,8 @@
-<!-- 
-    <div *ngIf="user | async; then authenticated else guest">
+
+<div *ngIf="user | async; then authenticated else guest">
    
 </div>
- -->
+
 
 <!-- User NOT logged in -->
 <ng-template #guest>
@@ -33,7 +33,7 @@
     </section>
 </ng-template>
 
-<!--  
+
 
 <ng-template #authenticated>
     <section class="container">
@@ -45,4 +45,3 @@
     </section>
 </ng-template>
 
--->
