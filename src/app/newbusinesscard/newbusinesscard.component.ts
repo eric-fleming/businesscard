@@ -5,7 +5,7 @@ import { BusinesscardsService } from '../service/businesscards.service';
 // For the Webcamera
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
+import { WebcamImage, WebcamInitError } from 'ngx-webcam';
 
 
 @Component({
