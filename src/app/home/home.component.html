@@ -1,41 +1,45 @@
 
 <h3 class="text-center">State of the final project</h3>
 
-<table>
-    <tr>
-        <th style="min-width:150px">Goal</th>
-        <th style="min-width:300px">State</th>
-    </tr>
-    <tr>
-        <td>Login & Logout</td>
-        <td><b>Works</b></td>
-    </tr>
-    <tr>
-        <td>Guarded Routes</td>
-        <td><b>Works</b></td>
-    </tr>
-    <tr>
-        <td>Add by typing</td>
-        <td><b>Works</b></td>
-    </tr>
-    <tr>
-        <td>Add by SnapShot</td>
-        <td><b>Does not work</b> : takes image, gets rejected at API call.</td>
-    </tr>
-    <tr>
-        <td>Search</td>
-        <td><b>Works</b></td>
-    </tr>
-    <tr>
-        <td>Update</td>
-        <td><b>Kinda works</b> : creates two items in the database with the same ID. I compared and contrasted with old examples and can't find the difference.</td>
-    </tr>
-    <tr>
-        <td>Delete</td>
-        <td><b>Kinda Works</b> : I can delete the duplicate records, but for some reason it wont delete the original.  Likely the same reference issue with my update method.</td>
-    </tr>
-    <tr>
-        <td>Delete All</td>
-        <td><b>Works</b> : Go figure...</td>
-    </tr>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <th scope="col" style="min-width:150px">Goal</th>
+        <th scope="col" style="min-width:300px">State</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">Login & Logout</td>
+            <td><b>Works</b></td>
+        </tr>
+        <tr>
+            <td scope="row">Guarded Routes</td>
+            <td><b>Works</b></td>
+        </tr>
+        <tr>
+            <td scope="row">Add by typing</td>
+            <td><b>Works</b></td>
+        </tr>
+        <tr>
+            <td scope="row">Add by SnapShot</td>
+            <td><b>Does not work</b> : takes image, gets rejected at API call.</td>
+        </tr>
+        <tr>
+            <td scope="row">Search</td>
+            <td><b>Works</b></td>
+        </tr>
+        <tr>
+            <td scope="row">Update</td>
+            <td><b>Kinda works</b> : creates two items in the database with the same ID. I compared and contrasted with old
+                examples and can't find the difference.</td>
+        </tr>
+        <tr>
+            <td scope="row">Delete</td>
+            <td><b>Kinda Works</b> : I can delete the duplicate records, but for some reason it wont delete the original. Likely
+                the same reference issue with my update method.</td>
+        </tr>
+        <tr>
+            <td scope="row">Delete All</td>
+            <td><b>Works</b> : Go figure...</td>
+        </tr>
+    </tbody>
 </table>
