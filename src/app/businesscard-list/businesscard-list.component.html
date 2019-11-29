@@ -1,7 +1,10 @@
-<p>Card list component renders </p>
-<button (click)="deleteAll()">Delete All Cards (Beware!)</button>
+<section class="page-section">
+    <h3>List of all Business Cards</h3>
+    <p>Scroll through and select a business card to edit, update or remove.</p>
+</section>
 <!-- Passes info from businessCardList to the businessCardComponent -->
 <app-businesscard
     *ngFor="let card of businessCardList; let i = index"
     [cardInfo] = card [i] = i>
 </app-businesscard>
+<button (click)="deleteAll()" class="btn btn-danger">Delete All Cards (Beware!)</button>

@@ -3,8 +3,10 @@
     display:flex;
     padding: 8px;
     margin:8px;
-    width:372px; 
-    height: 160px;
+    width:80%; 
+    height: 8%;
+    min-width: 450px;
+    min-height: 125px;
 
 }
 .info{
@@ -32,14 +34,6 @@
 
 .update-warning:hover{
     float: right;
-    background-color: darkgoldenrod;
-    color: white;
-}
-
-.delete-warning{
-    float: right;
-}
-.delete-warning:hover{
-    background-color: crimson;
+    background-color: lightseagreen;
     color: white;
 }

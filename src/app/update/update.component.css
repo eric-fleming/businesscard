@@ -7,29 +7,18 @@
     min-width: 128px;
     max-width: 256px;
     width:80%;
-    margin: 32px auto;
-    padding: 16px;
+    margin: 0 auto;
+    padding: 8px;
 }
 
 .form-input{
     margin-bottom: 8px;
 }
 
-.btn{
+button{
     margin-right: 16px;
 }
-.btn-info{
-    background-color: lightskyblue;
-}
-.btn-info:hover{
-    background-color: blue;
-    color: white;
-}
 
-.btn-danger{
-    background-color: lightcoral;
-}
-.btn-danger:hover{
-    background-color: red;
-    color: white;
+.page-section{
+    padding: 24px 16px;
 }
