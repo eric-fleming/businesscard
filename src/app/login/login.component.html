@@ -13,23 +13,17 @@
         <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input class="form-control" type="text" placeholder="username@email.com" formControlName="username">
+                <input class="form-control" type="text" placeholder="student@depaul.edu" formControlName="username">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input class="form-control" type="password" placeholder="password" formControlName="password"
+                <input class="form-control" type="password" placeholder="**********" formControlName="password"
                     [formControl]="loginForm.controls['password']">
             </div>
             <div class="login-options">
-                <button id="email-login" class="btn-lg" type="submit">Login</button>
+                <button id="email-login" class="btn btn-light" type="submit">Login</button>
             </div>
         </form>
-        <div>
-            <p>I made a generic student login</p>
-            <ul>
-                <li>student@depaul.edu</li>
-            </ul>
-        </div>
     </section>
 </ng-template>
 

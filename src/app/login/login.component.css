@@ -1,5 +1,5 @@
 .container{
-    width:50%;
+    width:36%;
     margin:0 auto;
     padding: 16px;
     background-color: #f1f1f1;
@@ -7,42 +7,31 @@
 .box{
     border-radius:16px;
     margin:128px auto;
+    padding:16px;
 }
 
 header{
     margin-bottom:8px;
 }
-.text-center{
-    text-align: center;
-}
 
 .form-group{
     margin-bottom: 8px;
+    padding-left:32px;
 }
 .form-control{
-    margin-left:16px;
-    padding:4px;
     border: 1px solid gray;
     border-radius:4px;
-    height:24px;
+    height:32px;
     width:256px;
 }
 
 .login-options{
-    padding: 8px;
-
+    padding-left:32px;
 }
 
-.login-options > button {
-    margin-right:16px;
-}
+
 #email-login{
     border: 1px solid lightseagreen;
-    border-radius: 4px;
-    width: 64px;
-    height: 24px;
-    font-size: 16px;
-    font-weight:700;
 }
 #email-login:hover{
     background-color: lightseagreen;
